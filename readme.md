@@ -16,12 +16,11 @@ Run this stuff on the Beaglebone to install.
 Install Python
 
     opkg update
-    opkg install python-distutils python-mmap python-pyserial
+    opkg install python-distutils python-mmap python-pyserial python-pyusb
 
-Install PyBBIO
+Install python-escpos
 
-    git clone git://github.com/alexanderhiam/PyBBIO.git
-    cd PyBBIO
-    python setup.py install
+    wget http://python-escpos.googlecode.com/files/python-escpos-1.0.tgz
+    tar xvzf python-escpos-1.0.tgz
 
 Install the print server.
