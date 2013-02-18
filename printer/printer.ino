@@ -33,21 +33,13 @@ void setup(){
 }
 
 int i;
-char thisLine[29];
+char thisLine[30];
 
 void loop() {
   while (Serial.available() > 0) {
-    // Clear the line
-    for (i = 0; i < 30; i ++){
-      thisLine[i] = ' ';
-    }
-    
-    // Read from serial
-    Serial.readBytesUntil('\n', thisLine, 30);
-
-    //Print
+    memset(thisLine, ' ', sizeof(thisLine) - 1);
+    Serial.readBytesUntil('\n', thisLine, sizeof(thisLine) - 1);
     printer.println(thisLine);
-    Serial.println(thisLine);
   }
 }
 
