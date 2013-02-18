@@ -10,17 +10,10 @@ Once it's running, you can print something like so.
 
 where `printer` is the printer's network address.
 
+You can also print something by plugging a USB cable into the arduino and sending text over serial.
+
+    # Directions here
+
 ## Installation
-Run this stuff on the Beaglebone to install.
-
-Install Python
-
-    opkg update
-    opkg install python-distutils python-mmap python-pyserial python-pyusb
-
-Install python-escpos
-
-    wget http://python-escpos.googlecode.com/files/python-escpos-1.0.tgz
-    tar xvzf python-escpos-1.0.tgz
-
-Install the print server.
+This requires an arduino with an ethernet shield and thermal printer.
+You also need Ladyada's thermal printer library.
