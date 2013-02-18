@@ -1,12 +1,11 @@
 Tom's Printer
 ===========
 Tom has a [thermal printer](http://learn.adafruit.com/mini-thermal-receipt-printer/microcontroller)
-connected to a Beaglebone
-and accessed over a local network. The Beaglebone runs the software in this repository.
+connected to an Arduino and accessed over a local network.
 
-Once it's running, you can print something like so.
+When it's running, you can print something like so.
 
-    curl --data=blahblah http://printer
+    curl --data foo=bar http://printer
 
 where `printer` is the printer's network address.
 
