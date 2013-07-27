@@ -25,7 +25,10 @@ EthernetServer server(80);
 
 void setup(){
   // Web server
-  Serial.begin(9600);
+  Ethernet.begin(mac, ip);
+  server.begin();
+  Serial.print("Server is at ");
+  Serial.println(Ethernet.localIP());
   
   // Printer
   pinMode(7, OUTPUT); digitalWrite(7, LOW);
