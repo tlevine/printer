@@ -1,3 +1,11 @@
+#include <Dhcp.h>
+#include <Dns.h>
+#include <Ethernet.h>
+#include <EthernetClient.h>
+#include <EthernetServer.h>
+#include <EthernetUdp.h>
+#include <util.h>
+
 /*************************************************************************
   This is an Arduino library for the Adafruit Thermal Printer.
   Pick one up at --> http://www.adafruit.com/products/597
@@ -27,8 +35,11 @@ int printer_TX_Pin = 6;  // This is the yellow wire
 Adafruit_Thermal printer(printer_RX_Pin, printer_TX_Pin);
 
 void setup(){
+  // Web server
   Serial.begin(9600);
-  pinMode(7, OUTPUT); digitalWrite(7, LOW); // To also work w/IoTP printer
+  
+  // Printer
+  pinMode(7, OUTPUT); digitalWrite(7, LOW);
   printer.begin();
 }
 
