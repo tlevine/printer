@@ -1,15 +1,8 @@
-#include <Dhcp.h>
-#include <Dns.h>
+#include <SPI.h>
 #include <Ethernet.h>
-#include <EthernetClient.h>
-#include <EthernetServer.h>
-#include <EthernetUdp.h>
-#include <util.h>
 
 #include "SoftwareSerial.h"
 #include "Adafruit_Thermal.h"
-#include "adalogo.h"
-#include "adaqrcode.h"
 #include <avr/pgmspace.h>
 
 // Printer
