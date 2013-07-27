@@ -39,10 +39,39 @@ int i;
 char thisLine[30];
 
 void loop() {
-  while (Serial.available() > 0) {
-    memset(thisLine, ' ', sizeof(thisLine) - 1);
-    Serial.readBytesUntil('\n', thisLine, sizeof(thisLine) - 1);
-    printer.println(thisLine);
+  // listen for incoming clients
+  EthernetClient client = server.available();
+  if (client) {
+    boolean currentLineIsBlank = true;
+    while (client.connected()) {
+      if (client.available()) {
+        char c = client.read();
+        Serial.write(c);
+
+        /*
+        while (Serial.available() > 0) {
+          memset(thisLine, ' ', sizeof(thisLine) - 1);
+          Serial.readBytesUntil('\n', thisLine, sizeof(thisLine) - 1);
+          printer.println(thisLine);
+        }
+        */
+
+        if (c == '\n' && currentLineIsBlank) {
+          // send a standard http response header
+          client.println("HTTP/1.1 204 No Content");
+          client.println("Connection: close");
+          break;
+        } else if (c == '\n') {
+          // you're starting a new line
+          currentLineIsBlank = true;
+        } else if (c != '\r') {
+          // you've gotten a character on the current line
+          currentLineIsBlank = false;
+        }
+      }
+    }
+    delay(1);
+    client.stop();
   }
 }
 
